@@ -18,11 +18,21 @@ package config
 
 // Overall configuration file structure
 type Config struct {
+	SocialtapConfig     SocialtapConfig     `ini:"socialtap" comment:"Socialtap server configuration"`
 	ServerConfig      ServerConfig      `ini:"server" comment:"HTTP server configuration"`
 	OAuthConfig       OAuth2Config      `ini:"oauth" comment:"OAuth 2 configuration"`
 	DatabaseConfig    DatabaseConfig    `ini:"database" comment:"Database configuration"`
 	ActivityPubConfig ActivityPubConfig `ini:"activitypub" comment:"ActivityPub configuration"`
 	NodeInfoConfig    NodeInfoConfig    `ini:"nodeinfo" comment:"NodeInfo configuration"`
+}
+
+type SocialtapConfig struct {
+	SubFolder    string `ini:"sub_folder" comment:"If you run the application server at e.g. https://socialtap.site/app/. You should set sub_folder to '/app/'."`
+	RedirectURL  string `ini:"redirect_url" comment:"To which endpoint should untappd redirect for authentication?"`
+	ClientID     string `ini:"client_id" comment:"The client ID of the untappd API"`
+	ClientSecret string `ini:"client_secret" comment:"The client secret of the untappd API"`
+	Debug        bool   `ini:"debug" comment:"Set debugging mode for the socialtap application server"`
+	Worker       bool   `ini:"worker" comment:"Enable or disable socialtap background worker"`
 }
 
 // Configuration section specifically for the HTTP server.
