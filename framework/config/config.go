@@ -33,6 +33,12 @@ type SocialtapConfig struct {
 	ClientSecret string `ini:"client_secret" comment:"The client secret of the untappd API"`
 	Debug        bool   `ini:"debug" comment:"Set debugging mode for the socialtap application server"`
 	Worker       bool   `ini:"worker" comment:"Enable or disable socialtap background worker"`
+	Mail         bool   `ini:"mail" comment:"Enable or disable the mail worker"`
+	SMTPFrom     string `ini:"smtp_from" comment:"The email address for sending the actual mail"`
+	SMTPHost     string `ini:"smtp_host" comment:"SMTP host address without the port"`
+	SMTPPort     int    `ini:"smtp_port" comment:"SMTP port number"`
+	SMTPUsername string `ini:"smtp_username" comment:"SMTP username"`
+	SMTPPassword string `ini:"smtp_password" comment:"SMTP password"`
 }
 
 // Configuration section specifically for the HTTP server.
